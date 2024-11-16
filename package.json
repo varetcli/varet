@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "varet",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A CLI tool to generate your defaults in new projects.",
   "repository": "https://github.com/tarikyildizci/varet.git",
   "type": "module",
