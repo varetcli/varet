@@ -2,9 +2,17 @@
 
 A CLI tool to generate your defaults in new projects.
 
+## Quick Start
+
+1. Run `npm i -g varet`
+2. Cd into an ampty directory
+3. Run `varet exec`
+4. Select the job
+5. Confirm job result
+
 ## Commands
 
-### Exec
+### `exec`
 
 Prompts to user to select the job that they want to run.
 
@@ -30,7 +38,7 @@ Prompts to user to select the job that they want to run.
 
 ## TODO
 
-[x] - jobs > git
-[x] - jobs > prettier
-[] - jobs > vscode
-[] - jobs > tailwind
+- [x] jobs > git
+- [x] jobs > prettier
+- [ ] jobs > vscode
+- [ ] jobs > tailwind
