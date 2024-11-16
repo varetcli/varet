@@ -63,6 +63,9 @@ function addPrettierScript(projectPath: string): void {
   console.log(
     'Added Prettier format script to package.json.',
   )
+
+  console.log('Running format command...')
+  execSync('yarn format')
 }
 
 function handler() {
