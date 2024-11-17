@@ -40,8 +40,8 @@ async function getYarnGlobalModules(): Promise<string[]> {
 // Load Yarn global modules dynamically
 async function loadYarnGlobalModules(program: Command) {
   try {
-    const globalModules = (await getYarnGlobalModules()).filter((m) =>
-      m.includes('varet-plugin'),
+    const globalModules = (await getYarnGlobalModules()).filter(
+      (m) => m.includes('varet-plugin') || m.startsWith('@varet/plugin-'),
     )
 
     // console.log('Global Yarn Modules Found:', globalModules)
