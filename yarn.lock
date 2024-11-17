@@ -163,6 +163,16 @@
   dependencies:
     undici-types "~6.19.8"
 
+"@varet/core@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@varet/core/-/core-0.0.7.tgz#2aa53dc2c613f67ace202dff082459b04b7a42d6"
+  integrity sha512-1GMJ+ljSOwKz3ir0FUUT+sXB4VgeB4IkEAKAKUjJWufBk0M8tA8EhRs9cfejk6WXvpxqh1J/HGo+52D97fyYNQ==
+  dependencies:
+    "@inquirer/prompts" "^7.1.0"
+    cfonts "^3.3.0"
+    commander "^12.1.0"
+    ora "^8.1.1"
+
 ansi-escapes@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.3.2.tgz#6b2291d1db7d98b6521d5f1efa42d0f3a9feb65e"
