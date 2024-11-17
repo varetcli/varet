@@ -1,52 +1,40 @@
 #!/usr/bin/env node
 
-import { program } from 'commander'
-import { select, Separator } from '@inquirer/prompts'
-import { commands } from './jobs/index.commands.js'
+import { gitPlugin } from '@varet/core'
+import { Command } from 'commander'
+import displayLogo from 'lib/displayLogo'
+import { insertPlugin } from 'lib/insertPlugin'
+import loadGlobalPlugins from 'lib/loadGlobalPlugins'
 
-program.command('exec').action(() =>
-  select({
-    message: 'Choose a job to run.',
-    choices: [
-      new Separator('General'),
-      {
-        value: 'git',
-        description: 'git init, master branch, gitflow',
-      },
-      {
-        value: 'prettier',
-        description:
-          '.prettierrc, prettier to devDeps, yarn format',
-      },
-      {
-        value: 'husky',
-        description: '.husky, .commitlintrc',
-      },
-      new Separator('Frontend'),
-      {
-        value: 'tailwind',
-        description:
-          'tailwind to devDeps, tailwind.config.ts',
-      },
-      new Separator('Backend'),
-      {
-        value: 'dotenv',
-        description:
-          'create .env.example + .env, install dotenv',
-      },
-    ],
-  })
-    .then((res) => {
-      getHandler(res)()
+const program = new Command()
+
+;(async () => {
+  // Load global plugins
+  insertPlugin(program, gitPlugin)
+  await loadGlobalPlugins(program)
+
+  program.addHelpText('beforeAll', (displayLogo() as any)?.string)
+
+  program
+    .command('version')
+    .description('Displays the current version of varet')
+    .action(() => {
+      console.log('0.1.0')
     })
-    .catch((err) => console.error(err)),
-)
 
-const getHandler = (job: string) => {
-  if (job in commands) {
-    return commands[job]
-  }
-  throw new Error('Unknown Command')
-}
+  program
+    .command('ls')
+    .description('lists all available jobs')
+    .action(() => {
+      console.log('Here are all the jobs you have: ')
+      program.commands
+        .map((c) => ({
+          name: c.name(),
+          description: c.description(),
+        }))
+        .forEach((c) => console.log(`- ${c.name} - ${c.description}`))
+    })
 
-program.parse(process.argv)
+  // Parse CLI commands
+  program.parse(process.argv)
+})()
