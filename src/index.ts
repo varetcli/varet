@@ -19,7 +19,7 @@ const program = new Command()
     .command('version')
     .description('Displays the current version of varet')
     .action(() => {
-      console.log('0.1.0')
+      console.log('0.1.8')
     })
 
   program
